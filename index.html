@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joana Santos — UX/UI & Product Designer</title>
+  <meta name="description" content="Senior UX/UI & Product Designer based in Amsterdam. Specialising in UX design, product design, and design systems." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="#" class="nav__logo" aria-label="Joana Santos — home">JS</a>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav__links" id="nav-links" role="list">
+        <li><a href="/about" class="nav__link">About</a></li>
+        <li><a href="/work" class="nav__link">Work</a></li>
+        <li><a href="/contact" class="nav__link">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Mobile overlay -->
+  <div class="nav__overlay" id="nav-overlay" aria-hidden="true"></div>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero__top">
+      <p class="hero__desc">Senior UX/UI Designer based in Amsterdam. 8+ years designing across B2C and B2B — from consumer fashion and retail to enterprise IoT and healthcare. I work at the intersection of user behaviour, business outcomes, and design strategy.</p>
+      <p class="hero__roles">UX/UI Design · Product Design · Design Strategy</p>
+    </div>
+    <h1 class="hero__name">Joana Santos</h1>
+  </section>
+
+
+
+
+
+  <div style="padding: 3rem var(--gutter); max-width: var(--max-w); margin: 0 auto;">
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
