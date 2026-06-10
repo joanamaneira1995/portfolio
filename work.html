@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work — Joana Santos</title>
+  <meta name="description" content="Selected work by Joana Santos — Senior UX/UI & Product Designer." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="/img/favicon.png" />
+
+  <style>
+    .work-page {
+      padding-top: var(--nav-h);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo" aria-label="Joana Santos — home">JS</a>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav__links" id="nav-links" role="list">
+        <li><a href="/about"    class="nav__link">About</a></li>
+        <li><a href="/work"     class="nav__link">Work</a></li>
+        <li><a href="/contact" class="nav__link">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Mobile overlay -->
+  <div class="nav__overlay" id="nav-overlay" aria-hidden="true"></div>
+
+  <main>
+    <div class="work-page">
+      <section class="work" id="work">
+        <div class="work-grid">
+
+          <!-- Featured: Digital DraughtMaster -->
+          <a href="/draughtmaster" class="work-item work-item--featured" aria-label="View Digital DraughtMaster case study">
+            <div class="work-placeholder" style="background:#0d2318;"></div>
+            <img class="work-img" src="img/dm-thumb.webp" alt="Digital DraughtMaster" onerror="this.style.display='none'" />
+            <div class="work-overlay">
+              <span class="work-title">Digital DraughtMaster</span>
+              <span class="work-meta">IoT · Product Design · Carlsberg · 2024</span>
+            </div>
+          </a>
+
+          <!-- Hugo Boss -->
+          <a href="/hugoboss" class="work-item" aria-label="View Hugo Boss case study">
+            <div class="work-placeholder" style="background:#1a1a2e;"></div>
+            <img class="work-img" src="img/hb-thumb.webp" alt="Hugo Boss" onerror="this.style.display='none'" />
+            <div class="work-overlay">
+              <span class="work-title">Hugo Boss</span>
+              <span class="work-meta">UX Redesign · 2026</span>
+            </div>
+          </a>
+
+          <!-- Pepe Jeans -->
+          <a href="/pepejeans" class="work-item" aria-label="View Pepe Jeans case study">
+            <div class="work-placeholder" style="background:#2d1b0e;"></div>
+            <img class="work-img" src="img/pj-thumb.webp" alt="Pepe Jeans" onerror="this.style.display='none'" />
+            <div class="work-overlay">
+              <span class="work-title">Pepe Jeans</span>
+              <span class="work-meta">UX Redesign · 2026</span>
+            </div>
+          </a>
+
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
