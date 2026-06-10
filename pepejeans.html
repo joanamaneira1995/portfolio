@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pepe Jeans — Joana Santos</title>
+  <meta name="description" content="UX redesign for Pepe Jeans — improving product discovery, checkout conversion, and brand coherence across digital touchpoints." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .cs-page { padding-top: var(--nav-h); }
+
+    .cs-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      padding: 1.75rem 0 0;
+      transition: color 0.2s ease;
+    }
+    .cs-back:hover { color: var(--text); }
+    .cs-back svg { transition: transform 0.2s ease; }
+    .cs-back:hover svg { transform: translateX(-3px); }
+
+    .cs-header {
+      padding: 3rem 0 3.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cs-category {
+      display: block;
+      font-size: 0.675rem;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .cs-title {
+      font-size: clamp(2.2rem, 5vw, 3.75rem);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .cs-tagline {
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 640px;
+      margin-bottom: 2.5rem;
+    }
+
+    .cs-meta { display: flex; flex-wrap: wrap; gap: 2rem; }
+    .cs-meta-label {
+      font-size: 0.675rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+    .cs-meta-value { font-size: 0.875rem; color: var(--text); }
+
+    .cs-hero-img {
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      background: #2d1b0e;
+      margin-bottom: clamp(4rem, 8vw, 7rem);
+    }
+
+    .cs-body { max-width: 760px; }
+
+    .cs-section { margin-bottom: clamp(3.5rem, 7vw, 6rem); }
+
+    .cs-section-label {
+      font-size: 0.675rem;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .cs-section p {
+      font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+      line-height: 1.78;
+      color: var(--muted);
+      margin-bottom: 1em;
+    }
+    .cs-section p:last-child { margin-bottom: 0; }
+    .cs-section p strong { color: var(--text); font-weight: 500; }
+
+    .cs-insight {
+      background: var(--bg-alt);
+      padding: clamp(3rem, 6vw, 5rem) var(--gutter);
+      margin: clamp(3.5rem, 7vw, 6rem) calc(-1 * var(--gutter));
+    }
+    .cs-insight blockquote { max-width: 680px; margin: 0 auto; }
+    .cs-insight p {
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+      font-weight: 400;
+      line-height: 1.45;
+      letter-spacing: -0.015em;
+      color: var(--text);
+      font-style: italic;
+    }
+
+    .cs-findings { list-style: none; margin-top: 1.5rem; }
+    .cs-findings li {
+      display: flex;
+      gap: 1.25rem;
+      padding: 1.25rem 0;
+      border-top: 1px solid var(--border);
+      font-size: clamp(0.9rem, 1.3vw, 1rem);
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .cs-findings li:last-child { border-bottom: 1px solid var(--border); }
+    .cs-findings__num {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      padding-top: 0.25rem;
+      flex-shrink: 0;
+      width: 1.5rem;
+    }
+
+    .cs-outcomes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      margin-top: 1.5rem;
+    }
+    .cs-outcome-item {
+      padding: 1.75rem;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .cs-outcome-item:nth-child(even) { border-right: none; }
+    .cs-outcome-item:nth-last-child(-n+2) { border-bottom: none; }
+    .cs-outcome-num {
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .cs-outcome-label { font-size: 0.82rem; line-height: 1.5; color: var(--muted); }
+
+    .cs-decisions { margin-top: 1.5rem; }
+    .cs-decision { padding: 1.5rem 0; border-top: 1px solid var(--border); }
+    .cs-decision:last-child { border-bottom: 1px solid var(--border); }
+    .cs-decision h3 { font-size: 0.875rem; font-weight: 500; color: var(--text); margin-bottom: 0.5rem; }
+    .cs-decision p { font-size: 0.9rem; line-height: 1.7; color: var(--muted); margin: 0; }
+
+    .cs-next {
+      border-top: 1px solid var(--border);
+      padding: 3rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-top: clamp(4rem, 8vw, 7rem);
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+    .cs-next:hover { opacity: 0.65; }
+    .cs-next__label { font-size: 0.675rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+    .cs-next__title { font-size: clamp(1.1rem, 2vw, 1.35rem); font-weight: 500; letter-spacing: -0.01em; color: var(--text); }
+    .cs-next__arrow { flex-shrink: 0; color: var(--muted); }
+
+    @media (max-width: 900px) {
+      .cs-meta { gap: 1.25rem; flex-wrap: wrap; }
+    }
+    @media (max-width: 680px) {
+      .cs-meta { gap: 1rem; }
+      .cs-header { padding: 1.5rem 0 2rem; }
+      .cs-outcomes-grid { grid-template-columns: 1fr; }
+      .cs-outcome-item { border-right: none; }
+      .cs-outcome-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
+      .cs-outcome-item:last-child { border-bottom: none; }
+      .cs-next { flex-wrap: wrap; }
+      .cs-next__arrow { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo" aria-label="Joana Santos — home">JS</a>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav__links" id="nav-links" role="list">
+        <li><a href="/about"         class="nav__link">About</a></li>
+        <li><a href="/work"          class="nav__link">Work</a></li>
+        <li><a href="/contact" class="nav__link">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="nav__overlay" id="nav-overlay" aria-hidden="true"></div>
+
+  <main>
+    <div class="cs-page">
+      <div class="section-inner">
+
+        <a href="/work" class="cs-back fade-in">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          All work
+        </a>
+
+        <header class="cs-header fade-in">
+          <span class="cs-category">AI · E-commerce · Product Design</span>
+          <h1 class="cs-title">Pepe Jeans</h1>
+          <p class="cs-tagline">
+            Designing BELLO — an AI-powered shopping buddy and personal stylist — for one of Europe's
+            most recognised fashion brands.
+          </p>
+          <div class="cs-meta">
+            <div class="cs-meta-item">
+              <p class="cs-meta-label">Role</p>
+              <p class="cs-meta-value">Senior Product Designer</p>
+            </div>
+            <div class="cs-meta-item">
+              <p class="cs-meta-label">Year</p>
+              <p class="cs-meta-value">2026</p>
+            </div>
+            <div class="cs-meta-item">
+              <p class="cs-meta-label">Sector</p>
+              <p class="cs-meta-value">AI · E-commerce · Fashion Retail</p>
+            </div>
+          </div>
+        </header>
+
+      </div>
+
+      <!-- Hero image — add your file at: img/pj-hero.jpg -->
+      <figure class="cs-hero-fig fade-in" style="background:#2d1b0e;">
+        <img src="img/pj-hero.webp" alt="Pepe Jeans — redesigned digital experience overview" loading="lazy" onerror="this.style.display='none'" />
+      </figure>
+
+      <div class="section-inner">
+        <div class="cs-body">
+
+          <div class="cs-section fade-in">
+            <p class="cs-section-label">01 / Context</p>
+            <p>
+              Pepe Jeans (founded 1973, London heritage, 100+ countries) had built a substantial global
+              e-commerce platform but faced a challenge common to mid-premium fashion brands: strong product
+              and brand equity offline, a digital experience that couldn't match it. The brief that arrived
+              wasn't a standard UX refresh — it was a strategic bet.
+            </p>
+            <p>
+              Pepe Jeans wanted to move beyond passive browse-and-filter shopping and build a platform that
+              could actively <strong>style customers, help them visualise fit, and make personalised
+              recommendations.</strong> The anchor feature was <strong>BELLO</strong> — a conversational AI
+              shopping buddy that would become the primary discovery entry point across the redesigned
+              platform. My role was to design BELLO and the four AI-powered features built around it.
+            </p>
+          </div>
+
+          <div class="cs-section fade-in">
+            <p class="cs-section-label">02 / The Problem</p>
+            <p>
+              <strong>Business challenge.</strong> Fashion e-commerce conversion is structurally limited when
+              customers can't visualise how something fits. Returns are costly, confidence at purchase is low,
+              and catalogue discovery is passive. Pepe Jeans needed to close the gap between the tactile,
+              advice-driven experience of physical retail and what the digital channel could offer — and do it
+              before digitally-native DTC competitors set the expectation.
+            </p>
+            <p>
+              <strong>User pain points.</strong> The biggest barriers to conversion weren't interface friction —
+              they were <strong>fit anxiety</strong> and <strong>discovery paralysis.</strong> Users didn't
+              know how products would look on their body. They were overwhelmed by catalogue breadth and
+              couldn't find "their" style within it. "Just browsing" was a symptom, not a behaviour.
+            </p>
+            <p>
+              <strong>Stakes.</strong> AI-powered personalisation in fashion was moving from differentiator to
+              table stakes. For Pepe Jeans to compete for the next generation of customers, the platform needed
+              to leapfrog a standard UX upgrade and build genuinely novel capabilities.
+            </p>
+          </div>
+
+          <div class="cs-section fade-in">
+            <p class="cs-section-label">03 / Research</p>
+            <p>
+              Methods: user interviews, session recording analysis, fit-return data review, competitor
+              benchmarking of AI-powered fashion tools, and concept validation with target users.
+            </p>
+            <ul class="cs-findings" role="list">
+              <li>
+                <span class="cs-findings__num">01</span>
+                <span>The majority of returns cited "fit" as the primary reason — a problem no amount of PDP redesign would solve. Size guides were distrusted because they showed measurement ranges, not how a garment actually fits different body types.</span>
+              </li>
+              <li>
+                <span class="cs-findings__num">02</span>
+                <span>Users described shopping decisions as "a gamble." The absence of a fitting room wasn't just a practical gap — it was an emotional one. Confidence at the point of purchase was structurally low.</span>
+              </li>
+              <li>
+                <span class="cs-findings__num">03</span>
+                <span>Discovery was broken in a specific way: users weren't struggling to find products — they were struggling to find their identity within the catalogue. The question wasn't "what does Pepe Jeans sell" but "what should I be wearing."</span>
+              </li>
+              <li>
+                <span class="cs-findings__num">04</span>
+                <span>Competitor benchmarking of early AI styling assistants (primarily US DTC brands) showed measurable impact on session depth and conversion — but most were bolted on rather than integrated into the core flow.</span>
+              </li>
+              <li>
+                <span class="cs-findings__num">05</span>
+                <span>Users who received personalised outfit recommendations converted at significantly higher rates than users who browsed independently. The value of curation over discovery was clear.</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Research / before-state visual — add your file at: img/pj-research.jpg -->
+        <figure class="cs-vis-wide fade-in">
+          <img src="img/pj-research.webp" alt="Pepe Jeans — BELLO feature scope and user journey mapping" loading="lazy" onerror="this.style.display='none'" />
+          <figcaption class="cs-vis-caption">BELLO — feature scope mapping across the four AI-powered experiences</figcaption>
+        </figure>
+
+      </div>
+
+      <div class="cs-insight fade-in">
+        <div class="section-inner">
+          <blockquote>
+            <p>"Users didn't need better filters.<br>They needed someone to tell them what to wear."</p>
+          </blockquote>
+        </div>
+      </div>
+
+      <div class="section-inner">
+        <div class="cs-body">
+
+          <div class="cs-section fade-in">
+            <p class="cs-section-label">04 / Design Approach</p>
+            <p>
+              <strong>Core architectural decision: BELLO as the primary discovery interface, not a sidebar
+              feature.</strong> Most AI assistants in retail are addons — a chat widget bolted onto an
+              existing browse experience. The decision here was to make BELLO the entry point itself, with
+              the traditional grid as a secondary mode. That changed every design decision that followed.
+            </p>
+            <div class="cs-decisions">
+              <div class="cs-decision">
+                <h3>BELLO — AI Shopping Buddy</h3>
+                <p>Conversational AI stylist that handles natural language queries ("show me the best denim sets for a night out"), processes style inspiration images via upload, and builds outfits through dialogue. Designed as the front door to discovery — not a fallback. Voice input, image upload, and catalogue-aware responses across mobile and desktop.</p>
+              </div>
+              <div class="cs-decision">
+                <h3>Virtual Try-On — "See Your Fit"</h3>
+                <p>Avatar-based fitting room. Users input measurements or upload a photo; the system generates a personalised avatar. Products render on the avatar with size recommendations. "Model Look" / "See It On Me" toggle lets users switch between editorial imagery and their own fit. Designed to close the confidence gap at the point of purchase.</p>
+              </div>
+              <div class="cs-decision">
+                <h3>Look Builder — "This Look Is Yours"</h3>
+                <p>AI-generated complete outfit recommendations built from user style preferences and size — surfaced as a shoppable visual grid. "Shop the Look" delivers one-tap checkout at the full outfit price. "Personalize the Look" lets BELLO swap individual pieces. Rejected: a purely editorial approach (static "Shop the Look" modules performed significantly worse in validation).</p>
+              </div>
+              <div class="cs-decision">
+                <h3>Visual Search</h3>
+                <p>Camera-based style matching: photograph an outfit you like, BELLO identifies similar items in the catalogue. Reduces discovery friction to zero for style-inspired shoppers. Built as a camera-first mobile experience with a desktop image-upload equivalent.</p>
+              </div>
+            </div>
+            <p style="margin-top:1.5rem;">
+              All four features were built on a <strong>unified design system</strong> — a shared frosted glass
+              card treatment for product surfaces, a consistent AI conversation UI pattern, shared avatar
+              rendering components, and a token architecture that scaled across mobile and desktop.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SCREENS OVERVIEW — full bleed. Add your file at: img/pj-screens.jpg -->
+      <figure class="cs-vis-full fade-in" style="background:#160e06;">
+        <img src="img/pj-screens.webp" alt="Pepe Jeans — Virtual Try-On feature states across mobile and desktop" loading="lazy" onerror="this.style.display='none'" />
+      </figure>
+
+      <!-- DETAIL SCREENS — dark showcase strip -->
+      <div class="fade-in" style="background:#160e06; padding: clamp(3rem, 6vw, 5rem) var(--gutter); margin: clamp(3.5rem, 7vw, 6rem) 0;">
+        <div style="max-width: var(--max-w); margin: 0 auto;">
+          <div class="cs-vis-pair" style="margin: 0; gap: 1.5rem;">
+            <figure style="background: rgba(255,255,255,0.04);">
+              <img src="img/pj-screen-1.webp" alt="BELLO AI Shopping Buddy — desktop interface with avatar and conversational styling" loading="lazy" onerror="this.style.display='none'" />
+              <figcaption class="cs-vis-caption" style="color: rgba(255,255,255,0.4); padding: 0.75rem 1rem;">BELLO desktop — avatar try-on with conversational AI stylist</figcaption>
+            </figure>
+            <figure style="background: rgba(255,255,255,0.04);">
+              <img src="img/pj-screen-2.webp" alt="BELLO Visual Search — camera-based outfit finder on mobile" loading="lazy" onerror="this.style.display='none'" />
+              <figcaption class="cs-vis-caption" style="color: rgba(255,255,255,0.4); padding: 0.75rem 1rem;">Visual Search — photograph an outfit, find matching pieces</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-inner">
+        <div class="cs-body">
+
+          <div class="cs-section fade-in">
+            <p class="cs-section-label">05 / Outcomes</p>
+            <div class="cs-stat-strip" style="display: grid; grid-template-columns: 1.8fr 1fr 1fr; margin-top: 2rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+              <div style="padding: 2.5rem 2.5rem 2.5rem 0; border-right: 1px solid var(--border);">
+                <p style="font-size: clamp(3.5rem, 7vw, 6rem); font-weight: 500; letter-spacing: -0.04em; line-height: 1; margin-bottom: 0.75rem; color: var(--text);">46%</p>
+                <p style="font-size: 0.82rem; line-height: 1.55; color: var(--muted);">Increase in platform traffic following BELLO launch</p>
+              </div>
+              <div style="padding: 2.5rem 2rem; border-right: 1px solid var(--border);">
+                <p style="font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1; margin-bottom: 0.75rem; color: var(--text);">4</p>
+                <p style="font-size: 0.82rem; line-height: 1.55; color: var(--muted);">AI features shipped from scratch</p>
+              </div>
+              <div style="padding: 2.5rem 0 2.5rem 2rem;">
+                <p style="font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1; margin-bottom: 0.75rem; color: var(--text);">1st</p>
+                <p style="font-size: 0.82rem; line-height: 1.55; color: var(--muted);">Unified design system across PJ's digital estate</p>
+              </div>
+            </div>
+            <p style="margin-top: 1.5rem;">
+              The design system established a shared component and token architecture across all four
+              AI features and every digital surface — the first time Pepe Jeans had a single source of
+              truth for design. Return rate impact from Virtual Try-On is in data collection at time
+              of writing.
+            </p>
+          </div>
+
+          <div class="cs-section fade-in">
+            <p class="cs-section-label">06 / What I'd do differently</p>
+            <p>
+              The BELLO conversational interface required more design iteration cycles than any other feature —
+              getting the tone, response latency patterns, and handoff between AI conversation and product
+              grid right took rounds of testing. In retrospect, I'd have built a dedicated conversation design
+              framework earlier rather than treating the chat UI as a standard component. How an AI stylist
+              communicates — confident but not prescriptive, suggestive but not pushy — deserves its own
+              design language before the first wireframe.
+            </p>
+            <p>
+              The virtual try-on accuracy also depended heavily on measurement input quality. The avatar
+              configuration experience was designed after the core try-on feature was specced, which created
+              some inconsistency in the early flows. Starting with the onboarding and measurement capture
+              experience and working outward would have produced a tighter system from the start.
+            </p>
+          </div>
+
+          <a href="/draughtmaster" class="cs-next fade-in" aria-label="Back to first project: Digital DraughtMaster">
+            <div>
+              <p class="cs-next__label">Back to first project</p>
+              <p class="cs-next__title">Digital DraughtMaster — Carlsberg</p>
+            </div>
+            <svg class="cs-next__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
