@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital DraughtMaster — Joana Santos</title>
+  <meta name="description" content="Four interconnected platforms for Carlsberg's IoT beer dispensing ecosystem — Control Tower, Bar Manager App, Technician App, and X10 Consumer App." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .cs-page { padding-top: var(--nav-h); }
+
+    .cs-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      padding: 1.75rem 0 0;
+      transition: color 0.2s ease;
+    }
+    .cs-back:hover { color: var(--text); }
+    .cs-back svg { transition: transform 0.2s ease; }
+    .cs-back:hover svg { transform: translateX(-3px); }
+
+    .cs-header {
+      padding: 3rem 0 3.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cs-category {
+      display: block;
+      font-size: 0.675rem;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .cs-title {
+      font-size: clamp(2.2rem, 5vw, 3.75rem);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .cs-tagline {
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 640px;
+      margin-bottom: 2.5rem;
+    }
+
+    .cs-meta { display: flex; flex-wrap: wrap; gap: 2rem; }
+    .cs-meta-label {
+      font-size: 0.675rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+    .cs-meta-value { font-size: 0.875rem; color: var(--text); }
+
+    .cs-body { max-width: 760px; }
+
+    .cs-section { margin-bottom: clamp(3.5rem, 7vw, 6rem); }
+
+    .cs-section-label {
+      font-size: 0.675rem;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .cs-section p {
+      font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+      line-height: 1.78;
+      color: var(--muted);
+      margin-bottom: 1em;
+    }
+    .cs-section p:last-child { margin-bottom: 0; }
+    .cs-section p strong { color: var(--text); font-weight: 500; }
+
+    .cs-insight {
+      background: var(--bg-alt);
+      padding: clamp(3rem, 6vw, 5rem) var(--gutter);
+      margin: clamp(3.5rem, 7vw, 6rem) calc(-1 * var(--gutter));
+    }
+    .cs-insight blockquote { max-width: 680px; margin: 0 auto; }
+    .cs-insight p {
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+      font-weight: 400;
+      line-height: 1.45;
+      letter-spacing: -0.015em;
+      color: var(--text);
+      font-style: italic;
+    }
+
+    /* Platform blocks */
+    .cs-platforms { margin-top: 2rem; }
+    .cs-platform {
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    .cs-platform:last-child { border-bottom: 1px solid var(--border); }
+    .cs-platform__meta {}
+    .cs-platform__label {
+      font-size: 0.675rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+    .cs-platform__name {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .cs-platform__users {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .cs-platform__body p {
+      font-size: clamp(0.9rem, 1.3vw, 1rem);
+      line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    /* Next project */
+    .cs-next {
+      border-top: 1px solid var(--border);
+      padding: 3rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-top: clamp(4rem, 8vw, 7rem);
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+    .cs-next:hover { opacity: 0.65; }
+    .cs-next__label { font-size: 0.675rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+    .cs-next__title { font-size: clamp(1.1rem, 2vw, 1.35rem); font-weight: 500; letter-spacing: -0.01em; color: var(--text); }
+    .cs-next__arrow { flex-shrink: 0; color: var(--muted); }
+
+    @media (max-width: 680px) {
+      .cs-meta { gap: 1.25rem; }
+      .cs-platform { grid-template-columns: 1fr; gap: 0.75rem; }
+      .cs-insight {
+        margin-left: calc(-1 * 16px);
+        margin-right: calc(-1 * 16px);
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Joana Santos — home">JS</a>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav__links" id="nav-links" role="list">
+        <li><a href="about.html"         class="nav__link">About</a></li>
+        <li><a href="work.html"          class="nav__link">Work</a></li>
+        <li><a href="contact.html" class="nav__link">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="nav__overlay" id="nav-overlay" aria-hidden="true"></div>
+
+  <main>
+    <div class="cs-page">
+      <div class="section-inner">
+
+        <a href="work.html" class="cs-back fade-in">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          All work
+        </a>
+
+        <header class="cs-header fade-in">
+          <span class="cs-category">IoT · Enterprise · Multi-platform</span>
+          <h1 class="cs-title">Digital DraughtMaster</h1>
+          <p class="cs-tagline">
+            Four interconnected platforms for Carlsberg's IoT beer dispensing ecosystem — serving Carlsberg's internal teams, bar owners, field technicians, and consumers.
+          </p>
+          <div class="cs-meta">
+            <div class="cs-meta-item">
+              <p class="cs-meta-label">Role</p>
+              <p class="cs-meta-value">Lead UX Designer</p>
+            </div>
+            <div class="cs-meta-item">
+              <p class="cs-meta-label">Client</p>
+              <p class="cs-meta-value">Carlsberg Group</p>
+            </div>
+            <div class="cs-meta-item">
+              <p class="cs-meta-label">Employer</p>
+              <p class="cs-meta-value">Metyis</p>
+            </div>
+            <div class="cs-meta-item">
+              <p class="cs-meta-label">Year</p>
+              <p class="cs-meta-value">2021 – 2024</p>
+            </div>
+            <div class="cs-meta-item">
+              <p class="cs-meta-label">Sector</p>
+              <p class="cs-meta-value">IoT · Hospitality · Enterprise</p>
+            </div>
+            <div class="cs-meta-item">
+              <p class="cs-meta-label">Team</p>
+              <p class="cs-meta-value">Sole UX/UI Designer · Frontend &amp; backend devs, engineers, product owners, data scientists &amp; stakeholders</p>
+            </div>
+          </div>
+        </header>
+
+      </div>
+
+      <!-- Hero: export the scattered multi-platform composite overview → img/dm-hero.webp -->
+      <figure class="cs-hero-fig fade-in" style="background:#0d2318;">
+        <img src="img/dm-hero.webp" alt="Digital DraughtMaster — four-platform overview" loading="lazy" onerror="this.style.display='none'" />
+      </figure>
+
+      <div class="section-inner">
+        <div class="cs-body">
+
+          <div class="cs-section fade-in">
+            <p class="cs-section-label">01 / Context</p>
+            <p>
+              Carlsberg Group describes Digital DraughtMaster as "the biggest innovation in draught beer
+              in 50 years." The hardware core is the <strong>Extra10 (X10)</strong> — a countertop unit
+              using proprietary <strong>10L PET kegs</strong> dispensed via compressed air, with no CO2
+              and no line cleaning required. Beer stays fresh for up to 31 days. Bar staff swap kegs
+              themselves in minutes.
+            </p>
+            <p>
+              Pressure sensors embedded in each keg feed real-time data — flow rates, temperatures,
+              keg levels — into an <strong>AWS cloud infrastructure</strong>. The platform was already live
+              across <strong>200+ venues in Western Europe</strong>, with a planned rollout across
+              <strong>10 countries from 2024</strong>. The operational software needed to scale with it.
+            </p>
+            <p>
+              I joined through <strong>Metyis</strong> as the sole UX/UI Designer on the project, responsible for the full
+              platform design across four distinct products: a web-based fleet management tool for
+              Carlsberg's internal teams, a mobile performance app for bar owners, a field installation
+              app for technicians, and a consumer companion app for X10 owners. Same data model. Four
+              completely different definitions of what that data means.
+            </p>
+          </div>
+
+          <div class="cs-section fade-in">
+            <p class="cs-section-label">02 / The Challenge</p>
+            <p>
+              The IoT data existed. The challenge was that the same underlying events needed to be
+              presented in fundamentally different ways depending on who was looking at them — and
+              what action they could take.
+            </p>
+            <p>
+              A pressure anomaly in Keg 3 at Café Europa means something different to a Carlsberg
+              operations manager coordinating across 200 venues, a bar owner who needs to know if
+              service will be disrupted tonight, a technician who has 45 minutes to diagnose and fix
+              it on-site, and a consumer checking their home X10 before a dinner party. The same
+              event. Four different users. Four different responses required.
+            </p>
+            <p>
+              <strong>The design problem wasn't information architecture — it was information
+              relevance.</strong> Every user group was either overwhelmed with data they couldn't
+              act on, or underserved with context they needed to make a decision.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="cs-insight fade-in">
+        <div class="section-inner">
+          <blockquote>
+            <p>"The data was the same for everyone.<br>What changed was who could act on it — and how fast."</p>
+          </blockquote>
+        </div>
+      </div>
+
+      <div class="section-inner">
+        <div class="cs-body">
+
+          <div class="cs-section fade-in">
+            <p class="cs-section-label">03 / The Platforms</p>
+            <p>
+              One design system. Four contexts. Each platform was built from a shared component library
+              and token set — but the information hierarchy, navigation depth, and interaction model
+              were designed specifically for each user type and the environment they work in.
+            </p>
+
+            <div class="cs-platforms">
+
+              <div class="cs-platform">
+                <div class="cs-platform__meta">
+                  <p class="cs-platform__label">Platform 01</p>
+                  <p class="cs-platform__name">Control Tower</p>
+                  <p class="cs-platform__users">Web · Carlsberg internal teams</p>
+                </div>
+                <div class="cs-platform__body">
+                  <p>Fleet-level visibility across all DDM venues. Carlsberg's operations and sales teams use the Control Tower to manage outlets, monitor installation health, track technician activity, and identify systemic issues before they escalate. The key design challenge was surfacing critical events — pressure errors, offline sensors, temperature anomalies — across hundreds of venues without overwhelming the dashboard with noise. The solution: a tiered status system (Ok / Warning / Error / Offline) with drill-down to individual outlet detail, line installation maps, and health monitoring logs. Issue reports are timestamped and tagged with resolution status, giving operations teams a full audit trail without manual reporting.</p>
+                </div>
+              </div>
+
+              <div class="cs-platform">
+                <div class="cs-platform__meta">
+                  <p class="cs-platform__label">Platform 02</p>
+                  <p class="cs-platform__name">Bar Manager App</p>
+                  <p class="cs-platform__users">Android · Bar &amp; restaurant owners</p>
+                </div>
+                <div class="cs-platform__body">
+                  <p>Daily performance at a glance for bar and restaurant operators. The app surfaces volume and speciality mix for the current day, benchmarked in real time against the day-of-week average, target, similar outlets nearby, and geographically close venues. Bar owners typically check this before service and during quiet periods — the design prioritises speed over depth. Performance data, brand-level keg status, and installation health are separated into four clear tabs (Overview, Performance, Product, Installation) so operators can reach the information they need without navigating through data irrelevant to them.</p>
+                </div>
+              </div>
+
+              <div class="cs-platform">
+                <div class="cs-platform__meta">
+                  <p class="cs-platform__label">Platform 03</p>
+                  <p class="cs-platform__name">Technician App</p>
+                  <p class="cs-platform__users">iOS · Field technicians</p>
+                </div>
+                <div class="cs-platform__body">
+                  <p>Designed to be used in a noisy cellar, under time pressure, often with one hand occupied. Technicians use the app both for new installations and for diagnosing faults at existing venues. The installation flow is guided step-by-step: scan the QR code on the hardware unit, select the component type (Pressure Chamber, Beer Tank, Cooling Unit), validate signal strength with a live indicator, confirm server connection, and mark installation complete. Fault diagnosis uses the same outlet-issue-resolution structure as the Control Tower — but surfaced through a mobile list with colour-coded priority tags rather than a data grid. Outlet search with inline issue labels lets technicians triage before they arrive on site.</p>
+                </div>
+              </div>
+
+              <div class="cs-platform">
+                <div class="cs-platform__meta">
+                  <p class="cs-platform__label">Platform 04</p>
+                  <p class="cs-platform__name">Extra10 / X10 App</p>
+                  <p class="cs-platform__users">iOS · Consumers &amp; small venue owners</p>
+                </div>
+                <div class="cs-platform__body">
+                  <p>The consumer-facing companion for X10 home and small venue units. The setup flow mirrors the technician installation experience but is designed for a non-technical user: Bluetooth discovery shows available units by serial number, activation involves opening the tower and following a visual prompt, and connection confirmation is celebrated with a clear success screen. Once set up, the app surfaces keg health (expiration date, temperature, days remaining), recent pour volume with day-of-week benchmarking, and personalised tips and insights based on pouring behaviour. The X10 app uses the same visual language as the rest of the DDM system — same typography, same status colours — but the tone shifts from operational to encouraging.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Full-bleed composite: export the scattered multi-window overview → img/dm-screens.webp -->
+      <figure class="cs-vis-full fade-in" style="background:#0a1f14;">
+        <img src="img/dm-screens.webp" alt="Digital DraughtMaster — platform screens overview" loading="lazy" onerror="this.style.display='none'" />
+      </figure>
+
+      <!-- 4-platform dark strip: 2×2 grid of one representative screen per platform -->
+      <!-- dm-screen-1.webp → Control Tower (outlets list or health monitor)         -->
+      <!-- dm-screen-2.webp → Bar Manager App (overview or performance screen)       -->
+      <!-- dm-screen-3.webp → Technician App (installation or outlet list)           -->
+      <!-- dm-screen-4.webp → X10 Consumer App (home or health screen)              -->
+      <div class="fade-in" style="background:#0a1f14; padding: clamp(3rem, 6vw, 5rem) var(--gutter); margin: clamp(3.5rem, 7vw, 6rem) 0;">
+        <div style="max-width: var(--max-w); margin: 0 auto;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+
+            <figure style="background: rgba(255,255,255,0.04); overflow: hidden;">
+              <img src="img/dm-screen-1.webp" alt="Control Tower — fleet management and outlet health" loading="lazy" onerror="this.style.display='none'" style="width:100%; height:auto; display:block; object-fit:cover;" />
+              <figcaption class="cs-vis-caption" style="color: rgba(255,255,255,0.4); padding: 0.75rem 1rem;">Control Tower — Carlsberg fleet &amp; health management</figcaption>
+            </figure>
+
+            <figure style="background: rgba(255,255,255,0.04); overflow: hidden;">
+              <img src="img/dm-screen-2.webp" alt="Bar Manager App — daily performance and speciality mix" loading="lazy" onerror="this.style.display='none'" style="width:100%; height:auto; display:block; object-fit:cover;" />
+              <figcaption class="cs-vis-caption" style="color: rgba(255,255,255,0.4); padding: 0.75rem 1rem;">Bar Manager App — outlet performance &amp; benchmarking</figcaption>
+            </figure>
+
+            <figure style="background: rgba(255,255,255,0.04); overflow: hidden;">
+              <img src="img/dm-screen-3.webp" alt="Technician App — QR installation and fault triage" loading="lazy" onerror="this.style.display='none'" style="width:100%; height:auto; display:block; object-fit:cover;" />
+              <figcaption class="cs-vis-caption" style="color: rgba(255,255,255,0.4); padding: 0.75rem 1rem;">Technician App — field installation &amp; fault triage</figcaption>
+            </figure>
+
+            <figure style="background: rgba(255,255,255,0.04); overflow: hidden;">
+              <img src="img/dm-screen-4.webp" alt="X10 Consumer App — keg health and performance tracking" loading="lazy" onerror="this.style.display='none'" style="width:100%; height:auto; display:block; object-fit:cover;" />
+              <figcaption class="cs-vis-caption" style="color: rgba(255,255,255,0.4); padding: 0.75rem 1rem;">Extra10 / X10 App — consumer keg health &amp; insights</figcaption>
+            </figure>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="section-inner">
+        <div class="cs-body">
+
+          <div class="cs-section fade-in">
+            <p class="cs-section-label">04 / Outcomes</p>
+            <div style="display: grid; grid-template-columns: 1.8fr 1fr 1fr; margin-top: 2rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+              <div style="padding: 2.5rem 2.5rem 2.5rem 0; border-right: 1px solid var(--border);">
+                <p style="font-size: clamp(3.5rem, 7vw, 6rem); font-weight: 500; letter-spacing: -0.04em; line-height: 1; margin-bottom: 0.75rem; color: var(--text);">4</p>
+                <p style="font-size: 0.82rem; line-height: 1.55; color: var(--muted);">Platforms shipped from a single shared design system — web, Android, iOS ×2</p>
+              </div>
+              <div style="padding: 2.5rem 2rem; border-right: 1px solid var(--border);">
+                <p style="font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1; margin-bottom: 0.75rem; color: var(--text);">200+</p>
+                <p style="font-size: 0.82rem; line-height: 1.55; color: var(--muted);">Venues live across Western Europe at launch</p>
+              </div>
+              <div style="padding: 2.5rem 0 2.5rem 2rem;">
+                <p style="font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1; margin-bottom: 0.75rem; color: var(--text);">10</p>
+                <p style="font-size: 0.82rem; line-height: 1.55; color: var(--muted);">Countries in Carlsberg's planned rollout from 2024</p>
+              </div>
+            </div>
+            <p style="margin-top: 1.5rem;">
+              The shared design system meant that component decisions made for the Control Tower — status
+              colours, severity indicators, outlet cards — carried through to the Technician App and Bar
+              Manager App without duplication. Engineers building across platforms worked from the same
+              token set. A change to the Error state propagated everywhere simultaneously.
+            </p>
+          </div>
+
+          <div class="cs-section fade-in">
+            <p class="cs-section-label">05 / Reflection</p>
+            <p>
+              Designing four products simultaneously creates a constant tension between coherence and
+              specificity. The temptation is to push component reuse too far — to make a mobile card
+              work identically to a web table row because they represent the same data object. In
+              practice, the Technician App needed components that worked glanceably at arm's length
+              in bad lighting; the Control Tower needed components that communicated density efficiently
+              across a large monitor. The design system held the token layer constant and let the
+              component layer flex.
+            </p>
+            <p>
+              The B2C product (X10 App) also required a genuine shift in tone that the enterprise
+              platforms didn't need — the same data (keg temperature, pour volume) needed to feel
+              reassuring rather than operational. Getting that balance calibrated, without breaking the
+              visual consistency of the broader system, was the most nuanced design problem on the project.
+            </p>
+          </div>
+
+          <a href="hugoboss.html" class="cs-next fade-in" aria-label="Next project: Hugo Boss">
+            <div>
+              <p class="cs-next__label">Next project</p>
+              <p class="cs-next__title">Hugo Boss — E-commerce Redesign</p>
+            </div>
+            <svg class="cs-next__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
