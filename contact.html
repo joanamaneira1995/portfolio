@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Joana Santos</title>
+  <meta name="description" content="Get in touch with Joana Santos — Senior UX/UI & Product Designer based in Amsterdam." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .contact-page {
+      padding-top: calc(var(--nav-h) + clamp(4rem, 8vw, 7rem));
+      padding-bottom: clamp(6rem, 12vw, 10rem);
+    }
+
+    .contact-heading {
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      line-height: 1.0;
+      color: var(--text);
+      margin-bottom: clamp(3rem, 6vw, 5rem);
+      padding-bottom: clamp(3rem, 6vw, 5rem);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .contact-heading em {
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: clamp(2.5rem, 5vw, 4rem);
+    }
+
+    .contact-col {
+      padding-right: 4rem;
+    }
+
+    .contact-col + .contact-col {
+      padding-right: 0;
+      padding-left: 4rem;
+      border-left: 1px solid var(--border);
+    }
+
+    .contact-col__label {
+      font-size: 0.675rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .contact-col p {
+      font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+      line-height: 1.75;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-col a {
+      color: var(--text);
+      text-decoration: underline;
+      text-decoration-color: var(--border);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.2s ease;
+    }
+
+    .contact-col a:hover {
+      text-decoration-color: var(--text);
+    }
+
+    .contact-col__links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      margin-top: 1rem;
+    }
+
+    .contact-col__links a {
+      font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+      color: var(--text);
+      width: fit-content;
+    }
+
+    @media (max-width: 680px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .contact-col + .contact-col {
+        padding-left: 0;
+        border-left: none;
+        border-top: 1px solid var(--border);
+        padding-top: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Joana Santos — home">JS</a>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav__links" id="nav-links" role="list">
+        <li><a href="about.html" class="nav__link">About</a></li>
+        <li><a href="work.html" class="nav__link">Work</a></li>
+        <li><a href="contact.html" class="nav__link nav__link--active">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Mobile overlay -->
+  <div class="nav__overlay" id="nav-overlay" aria-hidden="true"></div>
+
+  <main>
+    <div class="contact-page">
+      <div class="section-inner">
+
+        <h1 class="contact-heading fade-in">
+          Let's work<br><em>together</em>
+        </h1>
+
+        <div class="contact-grid fade-in">
+
+          <div class="contact-col">
+            <p class="contact-col__label">Get in touch</p>
+            <p><a href="mailto:joanamaneira1995@gmail.com">joanamaneira1995@gmail.com</a></p>
+            <div class="contact-col__links">
+              <a href="https://www.linkedin.com/in/joana-maneira-santos/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+          </div>
+
+          <div class="contact-col">
+            <p class="contact-col__label">Based in</p>
+            <p>Amsterdam — open to remote &amp; hybrid</p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <div style="padding: 3rem var(--gutter) 3rem; max-width: var(--max-w); margin: 0 auto;">
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hugo Boss — Joana Santos</title>
+  <meta name="description" content="Full e-commerce platform redesign and design system for HUGO BOSS — editorial homepage, virtual try-on, and the Impact Design System." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .cs-page { padding-top: var(--nav-h); }
+
+    .cs-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      padding: 1.75rem 0 0;
+      transition: color 0.2s ease;
+    }
+    .cs-back:hover { color: var(--text); }
+    .cs-back svg { transition: transform 0.2s ease; }
+    .cs-back:hover svg { transform: translateX(-3px); }
+
+    .cs-header {
+      padding: 3rem 0 3.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cs-category {
+      display: block;
+      font-size: 0.675rem;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .cs-title {
+      font-size: clamp(2.2rem, 5vw, 3.75rem);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .cs-tagline {
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 640px;
+      margin-bottom: 2.5rem;
+    }
+
+    .cs-meta { display: flex; flex-wrap: wrap; gap: 2rem; }
+    .cs-meta-label {
+      font-size: 0.675rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+    .cs-meta-value { font-size: 0.875rem; color: var(--text); }
+
+    .cs-body { max-width: 760px; }
+
+    .cs-section { margin-bottom: clamp(3.5rem, 7vw, 6rem); }
+
+    .cs-section-label {
+      font-size: 0.675rem;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .cs-section h2 {
+      font-size: clamp(1.15rem, 2vw, 1.35rem);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .cs-section p {
+      font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+      line-height: 1.78;
+      color: var(--muted);
+      margin-bottom: 1em;
+    }
+    .cs-section p:last-child { margin-bottom: 0; }
+    .cs-section p strong { color: var(--text); font-weight: 500; }
+
+    .cs-insight {
+      background: var(--bg-alt);
+      padding: clamp(3rem, 6vw, 5rem) var(--gutter);
+      margin: clamp(3.5rem, 7vw, 6rem) calc(-1 * var(--gutter));
+    }
+    .cs-insight blockquote { max-width: 680px; margin: 0 auto; }
+    .cs-insight p {
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+      font-weight: 400;
+      line-height: 1.45;
+      letter-spacing: -0.015em;
+      color: var(--text);
+      font-style: italic;
+    }
+
+    .cs-findings { list-style: none; margin-top: 1.5rem; }
+    .cs-findings li {
+      display: flex;
+      gap: 1.25rem;
+      padding: 1.25rem 0;
+      border-top: 1px solid var(--border);
+      font-size: clamp(0.9rem, 1.3vw, 1rem);
+      line-height: 1.7;
+      color: var(--muted);
+    }
+    .cs-findings li:last-child { border-bottom: 1px solid var(--border); }
+    .cs-findings__num {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      padding-top: 0.25rem;
+      flex-shrink: 0;
+      width: 1.5rem;
+    }
+
+    .cs-decisions { margin-top: 1.5rem; }
+    .cs-decision {
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--border);
+    }
+    .cs-decision:last-child { border-bottom: 1px solid var(--border); }
+    .cs-decision h3 { font-size: 0.875rem; font-weight: 500; color: var(--text); margin-bottom: 0.5rem; }
+    .cs-decision p { font-size: 0.9rem; line-height: 1.7; color: var(--muted); margin: 0; }
+
+    .cs-next {
+      border-top: 1px solid var(--border);
+      padding: 3rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-top: clamp(4rem, 8vw, 7rem);
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+    .cs-next:hover { opacity: 0.65; }
+    .cs-next__label { font-size: 0.675rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.4rem; }
+    .cs-next__title { font-size: clamp(1.1rem, 2vw, 1.35rem); font-weight: 500; letter-spacing: -0.01em; color: var(--text); }
+    .cs-next__arrow { flex-shrink: 0; color: var(--muted); }
+
+    @media (max-width: 900px) {
+      .cs-meta { gap: 1.25rem; flex-wrap: wrap; }
+    }
+    @media (max-width: 680px) {
+      .cs-meta { gap: 1rem; }
+      .cs-header { padding: 1.5rem 0 2rem; }
+      .cs-next { flex-wrap: wrap; }
+      .cs-next__arrow { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo" aria-label="Joana Santos — home">JS</a>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav__links" id="nav-links" role="list">
+        <li><a href="about.html"         class="nav__link">About</a></li>
+        <li><a href="work.html"          class="nav__link">Work</a></li>
+        <li><a href="contact.html" class="nav__link">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="nav__overlay" id="nav-overlay" aria-hidden="true"></div>
+
+  <main>
+    <div class="cs-page">
+      <div class="section-inner">
+
+        <a href="work.html" class="cs-back fade-in">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          All work
+        </a>
+
+        <header class="cs-header fade-in">
+          <span class="cs-category">E-commerce · Design Systems · Virtual Try-On</span>
+          <h1 class="cs-title">Hugo Boss</h1>
+          <p class="cs-tagline">
+            Full e-commerce platform redesign for HUGO BOSS — editorial homepage, virtual try-on, and the Impact Design System that unified it all.
+          </p>
+          <div class="cs-meta">
+            <div class="cs-meta-item">
+              <p class="cs-meta-label">Role</p>
+              <p class="cs-meta-value">Senior Product Designer (Lead)</p>
+            </div>
+            <div class="cs-meta-item">
+              <p class="cs-meta-label">Year</p>
+              <p class="cs-meta-value">2022 – 2024</p>
+            </div>
+            <div class="cs-meta-item">
+              <p class="cs-meta-label">Sector</p>
+              <p class="cs-meta-value">Fashion E-commerce</p>
+            </div>
+            <div class="cs-meta-item">
+              <p class="cs-meta-label">Team</p>
+              <p class="cs-meta-value">3 Designers · 2 PMs · Engineering · Brand</p>
+            </div>
+          </div>
+        </header>
+
+      </div>
+
+      <!-- Hero image: export the dark homepage ("OWN THE MOMENT / BE THE BOSS") → img/hb-hero.webp -->
+      <figure class="cs-hero-fig fade-in" style="background:#0d0d0d;">
+        <img src="img/hb-hero.webp" alt="Hugo Boss — editorial homepage redesign" loading="lazy" onerror="this.style.display='none'" />
+      </figure>
+
+      <div class="section-inner">
+        <div class="cs-body">
+
+          <div class="cs-section fade-in">
+            <p class="cs-section-label">01 / Context</p>
+            <p>
+              HUGO BOSS operates two distinct brand lines — BOSS (premium tailoring, refined) and HUGO
+              (contemporary, energetic) — under a single digital platform serving millions of customers
+              across Europe and beyond. The brief was to unify the experience without flattening either
+              brand identity, while significantly modernising how the platform performed commercially.
+            </p>
+            <p>
+              At the time, the site felt functional but not fashionable. Customers were discovering BOSS
+              through editorial media and Instagram, then landing on a platform that didn't match the
+              aspiration they'd just seen. The gap between brand and commerce was costing both conversion
+              and brand equity.
+            </p>
+          </div>
+
+          <div class="cs-section fade-in">
+            <p class="cs-section-label">02 / The Problem</p>
+            <p>
+              <strong>Brand vs. function.</strong> The homepage was a standard carousel-and-grid layout —
+              closer to a department store than a fashion house. Competitors like COS and Zara were investing
+              in editorial-first experiences that created desire before showing product. BOSS's digital
+              presence wasn't doing the same job as its runway campaigns, magazine placements, or stores.
+            </p>
+            <p>
+              <strong>Fit anxiety at high AOV.</strong> With average order values significantly above the
+              fashion e-commerce norm, the cost of a wrong-size purchase was high enough to stop users
+              converting at all. The existing product page provided a size guide — buried below the fold,
+              static, and one-size-fits-all. It didn't address the confidence gap.
+            </p>
+            <p>
+              <strong>Design system debt.</strong> Years of parallel sprint work across brand, commerce,
+              and editorial teams had created hundreds of one-off component variations. New features were
+              expensive to ship and frequently inconsistent with existing patterns.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="cs-insight fade-in">
+        <div class="section-inner">
+          <blockquote>
+            <p>"Users didn't need a better shop.<br>They needed to feel something before they bought."</p>
+          </blockquote>
+        </div>
+      </div>
+
+      <div class="section-inner">
+        <div class="cs-body">
+
+          <div class="cs-section fade-in">
+            <p class="cs-section-label">03 / Design Approach</p>
+            <p>
+              Two threads ran through all design decisions: the platform needed to feel like a fashion brand
+              first, an online shop second — and every new feature needed to be built on a foundation that
+              could scale without accumulating more debt.
+            </p>
+            <div class="cs-decisions">
+              <div class="cs-decision">
+                <h3>Editorial homepage</h3>
+                <p>Replaced the standard carousel layout with a full-bleed dark canvas and a scattered editorial photo grid — echoing BOSS's runway and campaign aesthetics. The hero leads with brand voice ("OWN THE MOMENT / BE THE BOSS") and a search-first UX rather than a product push. Category entry points are surfaced as fashion photography, not filter tabs.</p>
+              </div>
+              <div class="cs-decision">
+                <h3>"Let Boss Style Your Outfit" — virtual try-on</h3>
+                <p>Built a virtual outfit builder directly into the PDP as a primary tab (PRODUCT / AVATAR) — not a modal overlay or a secondary feature. Users can choose an avatar, enter tailor dimensions, upload a photo, and assemble and price a complete look. A "SHOP THE LOOK" CTA surfaces the full outfit total. The feature surfaced "Complete the Look" as a core commerce moment, not an afterthought.</p>
+              </div>
+              <div class="cs-decision">
+                <h3>PDP architecture</h3>
+                <p>Restructured information hierarchy based on scroll depth data. Product name, price, colour, size, and "Add to Bag" are all resolved in the top half of the viewport. Styling (Complete the Look, virtual try-on) follows immediately after — before specs, materials, and reviews. This sequencing reflected how purchase decisions actually progressed.</p>
+              </div>
+              <div class="cs-decision">
+                <h3>Impact Design System</h3>
+                <p>Built a unified token architecture covering typography at scale across three breakpoint tiers (XS/SM/MD mobile, XL/LG desktop, XXXL desktop), a full colour system for both BOSS and HUGO brand expressions, and 40+ core components. The system was designed to support both brand lines from a single source of truth without visual bleed between them.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Full homepage scroll — export the complete homepage scroll screenshot → img/hb-screens.webp -->
+      <figure class="cs-vis-full fade-in" style="background:#0d0d0d;">
+        <img src="img/hb-screens.webp" alt="Hugo Boss — full homepage redesign scroll" loading="lazy" onerror="this.style.display='none'" />
+      </figure>
+
+      <!-- Detail screens — dark showcase strip -->
+      <!-- hb-screen-1.webp: PDP with virtual try-on ("LET BOSS STYLE YOUR OUTFIT") -->
+      <!-- hb-screen-2.webp: Impact Design System typography sheet -->
+      <div class="fade-in" style="background:#0d0d0d; padding: clamp(3rem, 6vw, 5rem) var(--gutter); margin: clamp(3.5rem, 7vw, 6rem) 0;">
+        <div style="max-width: var(--max-w); margin: 0 auto;">
+          <div class="cs-vis-pair" style="margin: 0; gap: 1.5rem;">
+            <figure style="background: rgba(255,255,255,0.04);">
+              <img src="img/hb-screen-1.webp" alt="Hugo Boss — PDP with virtual try-on and outfit builder" loading="lazy" onerror="this.style.display='none'" />
+              <figcaption class="cs-vis-caption" style="color: rgba(255,255,255,0.4); padding: 0.75rem 1rem;">PDP — "Let Boss Style Your Outfit" virtual try-on</figcaption>
+            </figure>
+            <figure style="background: rgba(255,255,255,0.04);">
+              <img src="img/hb-screen-2.webp" alt="Hugo Boss — Impact Design System typography scales" loading="lazy" onerror="this.style.display='none'" />
+              <figcaption class="cs-vis-caption" style="color: rgba(255,255,255,0.4); padding: 0.75rem 1rem;">Impact Design System — typography scales across breakpoints</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-inner">
+        <div class="cs-body">
+
+          <div class="cs-section fade-in">
+            <p class="cs-section-label">04 / Outcomes</p>
+            <div class="cs-stat-strip" style="display: grid; grid-template-columns: 1.8fr 1fr 1fr; margin-top: 2rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+              <div style="padding: 2.5rem 2.5rem 2.5rem 0; border-right: 1px solid var(--border);">
+                <p style="font-size: clamp(3.5rem, 7vw, 6rem); font-weight: 500; letter-spacing: -0.04em; line-height: 1; margin-bottom: 0.75rem; color: var(--text);">4</p>
+                <p style="font-size: 0.82rem; line-height: 1.55; color: var(--muted);">Core platform surfaces redesigned end-to-end — homepage, PLP, PDP, and cart</p>
+              </div>
+              <div style="padding: 2.5rem 2rem; border-right: 1px solid var(--border);">
+                <p style="font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1; margin-bottom: 0.75rem; color: var(--text);">40+</p>
+                <p style="font-size: 0.82rem; line-height: 1.55; color: var(--muted);">Components in the Impact Design System</p>
+              </div>
+              <div style="padding: 2.5rem 0 2.5rem 2rem;">
+                <p style="font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1; margin-bottom: 0.75rem; color: var(--text);">1st</p>
+                <p style="font-size: 0.82rem; line-height: 1.55; color: var(--muted);">Virtual try-on integrated as a primary PDP feature in BOSS's digital history</p>
+              </div>
+            </div>
+            <p style="margin-top: 1.5rem;">
+              The Impact Design System unified BOSS and HUGO into a single component and token architecture —
+              the first time both brand lines shared a design foundation. Typography, colour, and spacing
+              were all tokenised across three breakpoint tiers. The system was adopted by all three product
+              squads within six months of launch.
+            </p>
+          </div>
+
+          <div class="cs-section fade-in">
+            <p class="cs-section-label">05 / Reflection</p>
+            <p>
+              The virtual try-on feature was the most technically ambitious part of the project. In retrospect,
+              involving engineering earlier in the avatar and dimension-input flows would have surfaced
+              implementation constraints before they became design constraints mid-build.
+            </p>
+            <p>
+              The design system also revealed a tension between brand expressiveness and component rigidity.
+              BOSS and HUGO have genuinely different visual languages — the system needed to be opinionated
+              enough to create consistency but flexible enough not to flatten that difference. Getting that
+              balance right took two additional rounds of token refinement after the first squad adoption.
+            </p>
+          </div>
+
+          <a href="pepejeans.html" class="cs-next fade-in" aria-label="Next project: Pepe Jeans">
+            <div>
+              <p class="cs-next__label">Next project</p>
+              <p class="cs-next__title">Pepe Jeans — BELLO AI Platform</p>
+            </div>
+            <svg class="cs-next__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
